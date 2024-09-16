@@ -288,14 +288,12 @@
                             <div
                                 class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8"
                             >
-                                <a
+                                <RestaurantCard
                                     v-for="restaurant in restaurants"
                                     :key="restaurant.id"
-                                    :href="restaurant.href"
+                                    :restaurant="restaurant"
                                     class="group"
-                                >
-                                    <RestaurantCard :restaurant="restaurant" />
-                                </a>
+                                />
                             </div>
                         </section>
                     </div>
