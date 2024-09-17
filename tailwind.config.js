@@ -9,4 +9,11 @@ module.exports = {
         require("@tailwindcss/aspect-ratio"),
         require("@tailwindcss/typography"),
     ],
+    theme: {
+        extend: {
+            maxWidth: {
+                custom: "1300px",
+            },
+        },
+    },
 };
