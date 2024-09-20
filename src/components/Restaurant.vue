@@ -149,14 +149,9 @@
                         <div
                             class="bg-white p-6 rounded-lg shadow-md text-center flex flex-col justify-between h-full"
                         >
-                            <iframe
-                                :src="mapUrl"
-                                width="100%"
-                                height="200"
-                                style="border: 0; border-radius: 8px"
-                                allowfullscreen=""
-                                loading="lazy"
-                            ></iframe>
+                            <RestaurantMap
+                                :restaurantCoordinates="coordinates"
+                            />
                             <a
                                 href="https://maps.google.com"
                                 target="_blank"
@@ -193,7 +188,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { onMounted, ref } from "vue";
+import RestaurantMap from "./RestaurantMap.vue";
 
 const images = ref([
     "https://ufood.s3-us-west-2.amazonaws.com/pictures/ec8c7eae-b114-4a4f-abf7-d8a1f1ebfdbd.jpg",
@@ -256,6 +252,7 @@ const mapUrl = ref(
 );
 const address = ref("12 rue Saint-Anne, QC, G1R 3X2");
 const phone = ref("+1 877-266-5687");
+const coordinates = ref([-71.2283214, 46.83446199999999]);
 </script>
 
 <style>

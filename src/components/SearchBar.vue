@@ -21,4 +21,15 @@
 
 <script setup>
 import { MagnifyingGlassIcon } from "@heroicons/vue/20/solid";
+import { ref, watch } from "vue";
+
+var search = ref("");
+
+// Emit the update:search to the parent component
+const emit = defineEmits(["update:search"]);
+
+// Watch for changes in search and emit to the parent
+watch(search, (newVal) => {
+    emit("update:search", newVal);
+});
 </script>
