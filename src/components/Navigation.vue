@@ -24,7 +24,10 @@
                             </router-link>
                         </div>
                     </div>
-                    <div class="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-6">
+                    <div
+                        class="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-6"
+                        :class="{ 'disabled-searchbox': isOnHomePage() }"
+                    >
                         <div
                             class="flex items-center px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0"
                         >
@@ -179,6 +182,7 @@ import {
 } from "@headlessui/vue";
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
 import SearchBar from "@/components/SearchBar.vue";
+import { useRoute } from "vue-router";
 
 const user = {
     name: "Chelsea Hagon",
@@ -192,4 +196,15 @@ const userNavigation = [
     { name: "Sign out", to: "/", showOnConnected: true },
     { name: "Sign In", to: "/", showOnConnected: false },
 ].filter((nav) => nav.showOnConnected === user.isConnected);
+
+function isOnHomePage() {
+    return useRoute().name === "Home";
+}
 </script>
+
+<style>
+.disabled-searchbox {
+    pointer-events: none;
+    opacity: 0;
+}
+</style>
