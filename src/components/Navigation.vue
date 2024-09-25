@@ -84,7 +84,7 @@
                                     <span class="absolute -inset-1.5" />
                                     <span class="sr-only">Open user menu</span>
                                     <img
-                                        class="h-8 w-8 rounded-full"
+                                        class="object-center object-cover h-8 w-8 rounded-full"
                                         :src="user.imageUrl"
                                         alt=""
                                     />
@@ -129,7 +129,7 @@
                     >
                         <div class="flex-shrink-0">
                             <img
-                                class="h-10 w-10 rounded-full"
+                                class="object-cover object-center h-10 w-10 rounded-full"
                                 :src="user.imageUrl"
                                 alt=""
                             />
@@ -185,10 +185,10 @@ import SearchBar from "@/components/SearchBar.vue";
 import { useRoute } from "vue-router";
 
 const user = {
-    name: "Chelsea Hagon",
-    email: "chelsea.hagon@example.com",
+    name: "Jane Doe",
+    email: "jane.doe@example.com",
     imageUrl:
-        "https://cdn.pixabay.com/photo/2018/02/26/21/44/hamburger-3184108_640.png",
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ",
     isConnected: true,
 };
 const userNavigation = [
