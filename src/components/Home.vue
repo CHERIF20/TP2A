@@ -125,19 +125,21 @@
             <main>
                 <div class="mx-auto max-w-3xl lg:max-w-7xl">
                     <div
-                        class="w-full h-96 flex flex-col items-center justify-center rounded-md bg-[url('https://media.istockphoto.com/id/486506594/photo/madrid-plaza-mayor-people-enjoying-al-fresco-restaurants-panorama-spain.jpg?s=612x612&w=0&k=20&c=E4kWi_-1l6XTUqOz3B5xis_-2jX5-89G25yYVLD3V18=')] bg-cover"
+                        class="w-full h-96 flex flex-col items-center rounded-md bg-[url('https://media.istockphoto.com/id/486506594/photo/madrid-plaza-mayor-people-enjoying-al-fresco-restaurants-panorama-spain.jpg?s=612x612&w=0&k=20&c=E4kWi_-1l6XTUqOz3B5xis_-2jX5-89G25yYVLD3V18=')] bg-cover"
                     >
-                        <div class="py-12 text-center">
+                        <div
+                            class="w-full h-full flex flex-col rounded-md justify-center items-center backdrop-blur-sm"
+                        >
                             <h1
-                                class="text-4xl font-bold tracking-tight text-gray-50"
+                                class="px-2 text-4xl font-bold tracking-tight text-gray-50 text-center"
                             >
                                 Discover the perfect restaurant for your next
                                 meal
                             </h1>
                             <div
-                                class="flex justify-center px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0"
+                                class="flex justify-center px-6 py-4 w-2/3 md:w-2/3 lg:w-1/2"
                             >
-                                <div class="w-2/3">
+                                <div class="w-full">
                                     <label for="search" class="sr-only"
                                         >Search</label
                                     >
@@ -207,7 +209,7 @@
                                 >
                                     <Popover
                                         as="div"
-                                        v-for="(section, sectionIdx) in filters"
+                                        v-for="section in filters"
                                         :key="section.name"
                                         id="menu"
                                         class="relative inline-block text-left"
@@ -217,11 +219,6 @@
                                                 class="group inline-flex items-center justify-center text-sm font-medium text-gray-700 hover:text-gray-900"
                                             >
                                                 <span>{{ section.name }}</span>
-                                                <span
-                                                    v-if="sectionIdx === 0"
-                                                    class="ml-1.5 rounded bg-gray-200 px-1.5 py-0.5 text-xs font-semibold tabular-nums text-gray-700"
-                                                    >1</span
-                                                >
                                                 <ChevronDownIcon
                                                     class="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                                                     aria-hidden="true"
