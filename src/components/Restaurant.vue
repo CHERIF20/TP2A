@@ -26,7 +26,7 @@
                             <h2
                                 class="text-3xl sm:text-4xl md:text-5xl font-extrabold"
                             >
-                                The Chef’s Corner
+                                {{ name }}
                             </h2>
                             <p class="mt-2 sm:mt-4 text-lg sm:text-xl">
                                 Book your table now to savor exquisite dishes.
@@ -146,40 +146,12 @@
 
                     <!-- Map and contact information -->
                     <div>
-                        <div
-                            class="bg-white p-6 rounded-lg shadow-md text-center flex flex-col justify-between h-full"
-                        >
-                            <RestaurantMap
-                                :restaurantCoordinates="coordinates"
-                            />
-                            <a
-                                href="https://maps.google.com"
-                                target="_blank"
-                                class="mt-4 inline-block bg-green-500 text-white px-6 py-2 rounded-lg shadow hover:bg-green-600 transition duration-300"
-                            >
-                                Get Directions
-                            </a>
-                            <div
-                                class="flex items-center justify-between border-t border-gray-200 pt-4"
-                            >
-                                <div class="flex items-center space-x-2">
-                                    <i
-                                        class="fas fa-map-marker-alt text-gray-500"
-                                    ></i>
-                                    <span class="text-sm text-gray-500">{{
-                                        address
-                                    }}</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <i
-                                        class="fas fa-phone-alt text-gray-500"
-                                    ></i>
-                                    <span class="text-sm text-gray-500">{{
-                                        phone
-                                    }}</span>
-                                </div>
-                            </div>
-                        </div>
+                        <RestaurantMap
+                            :restaurantCoordinates="coordinates"
+                            :restaurantPhone="phone"
+                            :restaurantAdress="address"
+                            :restaurantName="name"
+                        />
                     </div>
                 </dl>
             </div>
@@ -246,10 +218,7 @@ const priceRange = ref("20 - 50");
 const rating = ref("4.5/5");
 const fullStars = ref([1, 2, 3, 4]);
 const halfStar = ref(true);
-
-const mapUrl = ref(
-    "https://www.google.com/maps/embed/v1/place?q=Steak Avenue, Quebec&key=YOUR_API_KEY",
-);
+const name = ref("The Chef’s Corner");
 const address = ref("12 rue Saint-Anne, QC, G1R 3X2");
 const phone = ref("+1 877-266-5687");
 const coordinates = ref([-71.2283214, 46.83446199999999]);
