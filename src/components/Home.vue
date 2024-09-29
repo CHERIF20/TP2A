@@ -123,7 +123,7 @@
             </TransitionRoot>
 
             <main>
-                <div class="mx-auto max-w-3xl lg:max-w-7xl">
+                <div class="mt-16 pt-4 mx-auto max-w-3xl lg:max-w-7xl">
                     <div
                         class="w-full h-96 flex flex-col items-center rounded-md bg-[url('https://media.istockphoto.com/id/486506594/photo/madrid-plaza-mayor-people-enjoying-al-fresco-restaurants-panorama-spain.jpg?s=612x612&w=0&k=20&c=E4kWi_-1l6XTUqOz3B5xis_-2jX5-89G25yYVLD3V18=')] bg-cover"
                     >
@@ -143,7 +143,7 @@
                                     <label for="search" class="sr-only"
                                         >Search</label
                                     >
-                                    <SearchBar />
+                                    <SearchBar ref="searchBarTracker" />
                                 </div>
                             </div>
                         </div>
@@ -301,7 +301,8 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { onMounted, onBeforeUnmount, ref } from "vue";
+import { homeSearchBarStore } from "@/stores/homeSearchBarStore";
 import {
     Dialog,
     DialogPanel,
@@ -449,4 +450,31 @@ const restaurants = [
 ];
 
 const mobileFiltersOpen = ref(false);
+const sharedStoreWithNavBar = homeSearchBarStore();
+const searchBarTracker = ref(null);
+
+const updateSearchBarPosition = () => {
+    if (searchBarTracker.value && searchBarTracker.value.$el) {
+        const rect = searchBarTracker.value.$el.getBoundingClientRect();
+        sharedStoreWithNavBar.updatePosition({
+            top: rect.top,
+            left: rect.left,
+            right: rect.right,
+            bottom: rect.bottom,
+        });
+    }
+};
+
+const handleScroll = () => {
+    updateSearchBarPosition();
+};
+
+onMounted(() => {
+    updateSearchBarPosition();
+    window.addEventListener("scroll", handleScroll);
+});
+
+onBeforeUnmount(() => {
+    window.removeEventListener("scroll", handleScroll);
+});
 </script>

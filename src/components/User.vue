@@ -1,6 +1,6 @@
 <template>
     <div
-        class="container mx-auto flex items-center justify-center lg:h-[90vh] relative overflow-hidden"
+        class="container mx-auto mt-16 pt-4 flex items-center justify-center lg:h-[90vh] relative overflow-hidden"
     >
         <div
             class="w-full px-4 m-4 bg-white lg:flex lg:flex-row justify-evenly"

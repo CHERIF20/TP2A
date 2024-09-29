@@ -16,6 +16,7 @@
         "@tailwindcss/typography": "^0.5.15",
         "core-js": "^3.8.3",
         "editorconfig": "^2.0.0",
+        "pinia": "^2.2.2",
         "tailwind-shades": "^1.1.2",
         "vue": "^3.5.4",
         "vue-feather-icons": "^5.1.0",

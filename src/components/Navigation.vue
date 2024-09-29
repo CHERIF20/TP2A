@@ -3,8 +3,9 @@
     <Popover as="template" v-slot="{ open }">
         <header
             :class="[
-                open ? 'fixed inset-0 z-40 overflow-y-auto' : '',
-                'bg-white shadow-sm lg:static lg:overflow-y-visible',
+                'fixed top-0 z-40 w-full h-16 bg-white shadow-sm',
+                open ? 'overflow-y-auto h-max' : '',
+                'lg:overflow-y-visible',
             ]"
         >
             <div class="mx-auto px-4 sm:px-6 lg:px-8">
@@ -26,7 +27,9 @@
                     </div>
                     <div
                         class="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-6"
-                        :class="{ 'disabled-searchbox': isOnHomePage() }"
+                        :class="{
+                            'disabled-searchbox': disableSearchBar,
+                        }"
                     >
                         <div
                             class="flex items-center px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0"
@@ -183,6 +186,9 @@ import {
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
 import SearchBar from "@/components/SearchBar.vue";
 import { useRoute } from "vue-router";
+import { homeSearchBarStore } from "@/stores/homeSearchBarStore";
+import { storeToRefs } from "pinia";
+import { ref, watch } from "vue";
 
 const user = {
     name: "Jane Doe",
@@ -191,17 +197,27 @@ const user = {
         "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ",
     isConnected: true,
 };
+
+const sharedHomeSearchBarStore = homeSearchBarStore();
+const { position: homeSearchBarPosition } = storeToRefs(
+    sharedHomeSearchBarStore,
+);
+const disableSearchBar = ref(useRoute().name === "Home");
+watch(homeSearchBarPosition, (nv) => {
+    disableSearchBar.value = homeSearchBarPosition.value.top > 0;
+});
 const userNavigation = [
     { name: "Your Profile", to: "/user", showOnConnected: true },
     { name: "Sign out", to: "/", showOnConnected: true },
     { name: "Sign In", to: "/", showOnConnected: false },
 ].filter((nav) => nav.showOnConnected === user.isConnected);
-
-function isOnHomePage() {
-    return useRoute().name === "Home";
-}
 </script>
 
+<script>
+export default {
+    name: "NavMenu",
+};
+</script>
 <style>
 .disabled-searchbox {
     pointer-events: none;

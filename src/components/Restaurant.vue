@@ -1,5 +1,5 @@
 <template>
-    <div class="corp bg-gray-50">
+    <div class="mt-16 pt-4 bg-gray-50">
         <div class="max-w-custom mx-auto">
             <div class="relative overflow-hidden w-full rounded-md">
                 <div
