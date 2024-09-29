@@ -1,6 +1,6 @@
 # UFood
 
-Projet de session du cours GLO-3021: Développement d'application web
+Projet de session du cours GLO-3021: Développement d'application web   
 Ce projet consiste à développer une application web permettant de trouver des restaurants et de partager ses favoris entre amis
 
 ## Prérequis
@@ -54,6 +54,6 @@ VUE_APP_RESTAURANT_API=https://ufoodapi.herokuapp.com/
 Il est important de préfixer la variable avec VUE_APP
 
 
-> GLO-3021
-> UFood
-> Équipe 1
+> GLO-3021   
+> UFood  
+> Équipe 1  
