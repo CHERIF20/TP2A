@@ -1,0 +1,41 @@
+name: Linting and Prettier format check
+on:
+  push:
+    branches: ['**']
+  pull_request:
+    branches: [master, develop]
+
+jobs:
+  linting:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v3
+        name: Checkout code
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+        name: Set up Node.js
+      - run: npm install
+        name: Install dependencies
+      - run: npm run lint
+        name: Run linting rules
+
+  format-check:
+    needs: linting
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v3
+        name: Checkout code
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+        name: Set up Node.js
+      - run: npm install
+        name: Install dependencies
+      - run: npx prettier --check "**/*.{vue,js,ts}"
+        name: Run Prettier check
+
